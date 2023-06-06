@@ -1,8 +1,12 @@
 const { ChatInputCommandInteraction, Message, EmbedBuilder } = require("discord.js")
+const utils = require("../utils")
 
 class Context {
     constructor(context) {
         this.context = context
+        this.args = context.args
+        this.fetch = new utils.Fetch(this)
+        this.commandName = context.commandName
     }
 
     get bot() {
