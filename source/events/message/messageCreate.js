@@ -17,6 +17,10 @@ module.exports = {
             context.bot.commands.get(commandName) || 
             context.bot.commands.find((cmd) => cmd.aliases?.includes(commandName))
         if (!command) return
+
+        message.commandName = commandName
+        context.args = args
+
         await command.execute(context)
     }
 }
