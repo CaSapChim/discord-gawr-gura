@@ -9,9 +9,9 @@ module.exports = {
         const prefix = prefixes.find((p) => message.content.toLowerCase().startsWith(p))
         if (!prefix) return
         const [commandName, ...args] = message.content
+            .slice(prefix.length)
             .trim()
             .toLowerCase()
-            .slice(prefix.length)
             .split(/ +/g)
         const command = 
             context.bot.commands.get(commandName) || 
